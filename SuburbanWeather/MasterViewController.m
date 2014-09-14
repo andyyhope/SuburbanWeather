@@ -10,9 +10,30 @@
 
 #import "DetailViewController.h"
 
-@interface MasterViewController () {
-    NSMutableArray *_objects;
+#import "Suburb.h"
+#import "Parser.h"
+
+#import "SuburbTableViewCell.h"
+#import "NoDataTableViewCell.h"
+
+#import "SortViewController.h"
+
+#import "SortStoryboardSegue.h"
+#import "SortUnwindStoryboardSegue.h"
+#import "DetailStoryboardSegue.h"
+#import "DetailUnwindStorboardSegue.h"
+#import "Utility.h"
+
+NSString *const kJSONurl = @"http://dnu5embx6omws.cloudfront.net/venues/weather.json";
+
+@interface MasterViewController ()
+<SortViewDelegate, UISearchBarDelegate, UIViewControllerTransitioningDelegate>
+{
+    NSArray *_objects;
+    NSArray *_searchArray;
+    BOOL searching;
 }
+
 @end
 
 @implementation MasterViewController
@@ -25,27 +46,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    
+    [Parser parseURL:kJSONurl completion:^(NSArray *items) {
+        _objects = [NSArray arrayWithArray:items];
+        [self.tableView reloadData];
+        [self.activityIndicator stopAnimating];
+    }];
+    
+    self.sortAscending = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)insertNewObject:(id)sender
-{
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
@@ -57,57 +72,138 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    if (searching) return _searchArray.count;
+    else return _objects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    Suburb *s = (searching)? _searchArray[indexPath.row] : _objects[indexPath.row];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
-    return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    if (s.temperature > 0) {
+        SuburbTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        cell.suburbLabel.text = s.name;
+        cell.lastUpdatedLabel.text = s.daysAgoString;
+        cell.temperatureLabel.text = [NSString stringWithFormat:@"%li°", (long)s.temperature];
+        cell.conditionIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@-small",s.conditionIcon]];
+        
+        UIColor *color = [Utility colorForCondition:s.conditionIcon];
+        cell.temperatureLabel.textColor = color;
+        cell.conditionIcon.tintColor = color;
+        return cell;
+    } else
+    {
+        NoDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoDataCell" forIndexPath:indexPath];
+        cell.suburbLabel.text = s.name;
+        return cell;
     }
+    
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    // Used different Segue's for different views
+    // Detail comes from the top
+    // Sort comes from the bottom
+    
+    if ([segue isKindOfClass:[DetailStoryboardSegue class]]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        Suburb *suburb = _objects[indexPath.row];
+        DetailViewController *detailController = segue.destinationViewController;
+        detailController.suburb = suburb;
     }
+    if([segue isKindOfClass:[SortStoryboardSegue class]]) {
+        SortViewController *sortController = segue.destinationViewController;
+        sortController.delegate = self;
+        sortController.sortStyle = (SortStyle)self.sortStyle;
+        sortController.sortAscending = (self.sortStyle == MVCSortStyleLastUpdated)? !self.sortAscending : self.sortAscending;
+    }
+}
+
+
+- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+    if ([fromViewController isKindOfClass:[SortViewController class]]) {
+        SortUnwindStoryboardSegue *segue = [[SortUnwindStoryboardSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
+        return segue;
+    }
+    
+    if ([fromViewController isKindOfClass:[DetailViewController class]]){
+        DetailUnwindStorboardSegue *segue = [[DetailUnwindStorboardSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
+        return segue;
+    }
+    
+    return [super segueForUnwindingToViewController:toViewController fromViewController:fromViewController identifier:identifier];
+    
+}
+
+- (IBAction)unwindFromSortViewController:(UIStoryboardSegue *)sender {
+    NSLog(@"Sort - Returning to Suburbs List");
+}
+
+- (IBAction)unwindFromDetailViewController:(UIStoryboardSegue *)sender {
+    NSLog(@"Detail - Returning to Suburbs List");
+}
+
+#pragma mark - Search Bar Delegate
+
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    // Quick fix to tint the searchBar textfield Label because i ran out of time
+    UITextField *searchField = [searchBar valueForKey:@"_searchField"];
+    searchField.textColor = [UIColor whiteColor];
+    
+    // Each time the user edits the first, it will perform this search
+    // Because i knew the list was finite, i made it do this
+    // If it had to query a remote server for results, i would have probably made the search perform on pressing "Search" button
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", searchText];
+    _searchArray = [NSArray arrayWithArray:[_objects filteredArrayUsingPredicate:predicate]];
+    searching = (searchText.length > 0)? YES : NO;
+    [self.tableView reloadData];
+    
+}
+
+#pragma mark - Sort View Delegate
+- (void)sortViewDidSelectSortStyle:(SortStyle)sortStyle withDirection:(BOOL)direction
+{
+    
+    NSLog(@"direction ascending %i", direction);
+    
+    self.sortStyle = (MVCSortStyle)sortStyle;
+    
+    NSString *key;
+    
+    switch (sortStyle) {
+        case SortStyleAlphabetically:
+            key = @"name";
+            break;
+        case SortStyleTemperature:
+            key = @"temperature";
+            break;
+            
+        case SortStyleLastUpdated:
+            key = @"lastUpdated";
+            break;
+        default:
+            break;
+    }
+    
+    // Flip it if Last Updated is checked, it works opposite to the rest
+    self.sortAscending = (self.sortStyle == MVCSortStyleLastUpdated)? !direction : direction;
+    
+    // Add sort descriptor to array
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:self.sortAscending];
+    _objects = [_objects sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    [self.tableView reloadData];
+    
 }
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661576A119B1A6C800C3F44C /* SortStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 661576A019B1A6C800C3F44C /* SortStoryboardSegue.m */; };
+		661576A419B1B02E00C3F44C /* SortUnwindStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 661576A319B1B02E00C3F44C /* SortUnwindStoryboardSegue.m */; };
+		661576A719B2C14100C3F44C /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 661576A619B2C14100C3F44C /* UIColor+Hex.m */; };
+		661576AB19B2C46700C3F44C /* TintedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 661576AA19B2C46700C3F44C /* TintedImageView.m */; };
 		661654DB19AE1BD500C4CC47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661654DA19AE1BD500C4CC47 /* Foundation.framework */; };
 		661654DD19AE1BD500C4CC47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661654DC19AE1BD500C4CC47 /* CoreGraphics.framework */; };
 		661654DF19AE1BD500C4CC47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661654DE19AE1BD500C4CC47 /* UIKit.framework */; };
@@ -22,6 +26,15 @@
 		661654FF19AE1BD500C4CC47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661654DE19AE1BD500C4CC47 /* UIKit.framework */; };
 		6616550719AE1BD500C4CC47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6616550519AE1BD500C4CC47 /* InfoPlist.strings */; };
 		6616550919AE1BD500C4CC47 /* SuburbanWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6616550819AE1BD500C4CC47 /* SuburbanWeatherTests.m */; };
+		661E701719AEF47300F2B916 /* SortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E701619AEF47300F2B916 /* SortViewController.m */; };
+		661E701A19AEF98A00F2B916 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E701919AEF98A00F2B916 /* Utility.m */; };
+		661E701D19AEFD3700F2B916 /* NoDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E701C19AEFD3700F2B916 /* NoDataTableViewCell.m */; };
+		66C2251119B350D4000860B1 /* DetailStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C2251019B350D4000860B1 /* DetailStoryboardSegue.m */; };
+		66C2251419B350F7000860B1 /* DetailUnwindStorboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C2251319B350F7000860B1 /* DetailUnwindStorboardSegue.m */; };
+		66C2251719B3590B000860B1 /* SortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C2251619B3590B000860B1 /* SortTableViewCell.m */; };
+		66D1118619AEA9DF0073003E /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1118519AEA9DF0073003E /* Parser.m */; };
+		66D1118A19AEAA0F0073003E /* Suburb.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1118919AEAA0F0073003E /* Suburb.m */; };
+		66D1118D19AEB0270073003E /* SuburbTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1118C19AEB0270073003E /* SuburbTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +48,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6615769F19B1A6C800C3F44C /* SortStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortStoryboardSegue.h; sourceTree = "<group>"; };
+		661576A019B1A6C800C3F44C /* SortStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortStoryboardSegue.m; sourceTree = "<group>"; };
+		661576A219B1B02E00C3F44C /* SortUnwindStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortUnwindStoryboardSegue.h; sourceTree = "<group>"; };
+		661576A319B1B02E00C3F44C /* SortUnwindStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortUnwindStoryboardSegue.m; sourceTree = "<group>"; };
+		661576A519B2C14100C3F44C /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		661576A619B2C14100C3F44C /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		661576A919B2C46700C3F44C /* TintedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TintedImageView.h; sourceTree = "<group>"; };
+		661576AA19B2C46700C3F44C /* TintedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TintedImageView.m; sourceTree = "<group>"; };
 		661654D719AE1BD500C4CC47 /* SuburbanWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuburbanWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		661654DA19AE1BD500C4CC47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		661654DC19AE1BD500C4CC47 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,6 +77,24 @@
 		6616550419AE1BD500C4CC47 /* SuburbanWeatherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SuburbanWeatherTests-Info.plist"; sourceTree = "<group>"; };
 		6616550619AE1BD500C4CC47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6616550819AE1BD500C4CC47 /* SuburbanWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuburbanWeatherTests.m; sourceTree = "<group>"; };
+		661E701519AEF47300F2B916 /* SortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortViewController.h; sourceTree = "<group>"; };
+		661E701619AEF47300F2B916 /* SortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortViewController.m; sourceTree = "<group>"; };
+		661E701819AEF98A00F2B916 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		661E701919AEF98A00F2B916 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		661E701B19AEFD3700F2B916 /* NoDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoDataTableViewCell.h; sourceTree = "<group>"; };
+		661E701C19AEFD3700F2B916 /* NoDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoDataTableViewCell.m; sourceTree = "<group>"; };
+		66C2250F19B350D4000860B1 /* DetailStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailStoryboardSegue.h; sourceTree = "<group>"; };
+		66C2251019B350D4000860B1 /* DetailStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailStoryboardSegue.m; sourceTree = "<group>"; };
+		66C2251219B350F7000860B1 /* DetailUnwindStorboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailUnwindStorboardSegue.h; sourceTree = "<group>"; };
+		66C2251319B350F7000860B1 /* DetailUnwindStorboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailUnwindStorboardSegue.m; sourceTree = "<group>"; };
+		66C2251519B3590B000860B1 /* SortTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortTableViewCell.h; sourceTree = "<group>"; };
+		66C2251619B3590B000860B1 /* SortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortTableViewCell.m; sourceTree = "<group>"; };
+		66D1118419AEA9DF0073003E /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		66D1118519AEA9DF0073003E /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		66D1118819AEAA0F0073003E /* Suburb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Suburb.h; sourceTree = "<group>"; };
+		66D1118919AEAA0F0073003E /* Suburb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Suburb.m; sourceTree = "<group>"; };
+		66D1118B19AEB0270073003E /* SuburbTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuburbTableViewCell.h; sourceTree = "<group>"; };
+		66D1118C19AEB0270073003E /* SuburbTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuburbTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +121,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6615769B19B1A40800C3F44C /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				66C2250F19B350D4000860B1 /* DetailStoryboardSegue.h */,
+				66C2251019B350D4000860B1 /* DetailStoryboardSegue.m */,
+				66C2251219B350F7000860B1 /* DetailUnwindStorboardSegue.h */,
+				66C2251319B350F7000860B1 /* DetailUnwindStorboardSegue.m */,
+				6615769F19B1A6C800C3F44C /* SortStoryboardSegue.h */,
+				661576A019B1A6C800C3F44C /* SortStoryboardSegue.m */,
+				661576A219B1B02E00C3F44C /* SortUnwindStoryboardSegue.h */,
+				661576A319B1B02E00C3F44C /* SortUnwindStoryboardSegue.m */,
+			);
+			name = Transitions;
+			sourceTree = "<group>";
+		};
+		661576A819B2C44900C3F44C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				661576A519B2C14100C3F44C /* UIColor+Hex.h */,
+				661576A619B2C14100C3F44C /* UIColor+Hex.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		661654CE19AE1BD500C4CC47 = {
 			isa = PBXGroup;
 			children = (
@@ -115,13 +178,16 @@
 		661654E019AE1BD500C4CC47 /* SuburbanWeather */ = {
 			isa = PBXGroup;
 			children = (
+				66C2250819B2E97B000860B1 /* Controls */,
+				661576A819B2C44900C3F44C /* Categories */,
+				6615769B19B1A40800C3F44C /* Transitions */,
+				66D1118719AEA9FE0073003E /* Model */,
+				66C2250B19B2E9B1000860B1 /* View Controllers */,
+				66C2250A19B2E9A2000860B1 /* Table View Cells */,
+				66C2250919B2E98F000860B1 /* Utilities */,
 				661654E919AE1BD500C4CC47 /* AppDelegate.h */,
 				661654EA19AE1BD500C4CC47 /* AppDelegate.m */,
 				661654EC19AE1BD500C4CC47 /* Main.storyboard */,
-				661654EF19AE1BD500C4CC47 /* MasterViewController.h */,
-				661654F019AE1BD500C4CC47 /* MasterViewController.m */,
-				661654F219AE1BD500C4CC47 /* DetailViewController.h */,
-				661654F319AE1BD500C4CC47 /* DetailViewController.m */,
 				661654F519AE1BD500C4CC47 /* Images.xcassets */,
 				661654E119AE1BD500C4CC47 /* Supporting Files */,
 			);
@@ -155,6 +221,61 @@
 				6616550519AE1BD500C4CC47 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66C2250819B2E97B000860B1 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				661576A919B2C46700C3F44C /* TintedImageView.h */,
+				661576AA19B2C46700C3F44C /* TintedImageView.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		66C2250919B2E98F000860B1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				66D1118419AEA9DF0073003E /* Parser.h */,
+				66D1118519AEA9DF0073003E /* Parser.m */,
+				661E701819AEF98A00F2B916 /* Utility.h */,
+				661E701919AEF98A00F2B916 /* Utility.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		66C2250A19B2E9A2000860B1 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				66D1118B19AEB0270073003E /* SuburbTableViewCell.h */,
+				66D1118C19AEB0270073003E /* SuburbTableViewCell.m */,
+				661E701B19AEFD3700F2B916 /* NoDataTableViewCell.h */,
+				661E701C19AEFD3700F2B916 /* NoDataTableViewCell.m */,
+				66C2251519B3590B000860B1 /* SortTableViewCell.h */,
+				66C2251619B3590B000860B1 /* SortTableViewCell.m */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		66C2250B19B2E9B1000860B1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				661654EF19AE1BD500C4CC47 /* MasterViewController.h */,
+				661654F019AE1BD500C4CC47 /* MasterViewController.m */,
+				661654F219AE1BD500C4CC47 /* DetailViewController.h */,
+				661654F319AE1BD500C4CC47 /* DetailViewController.m */,
+				661E701519AEF47300F2B916 /* SortViewController.h */,
+				661E701619AEF47300F2B916 /* SortViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		66D1118719AEA9FE0073003E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				66D1118819AEAA0F0073003E /* Suburb.h */,
+				66D1118919AEAA0F0073003E /* Suburb.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,10 +375,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D1118A19AEAA0F0073003E /* Suburb.m in Sources */,
 				661654EB19AE1BD500C4CC47 /* AppDelegate.m in Sources */,
+				661576A419B1B02E00C3F44C /* SortUnwindStoryboardSegue.m in Sources */,
 				661654F119AE1BD500C4CC47 /* MasterViewController.m in Sources */,
+				66D1118D19AEB0270073003E /* SuburbTableViewCell.m in Sources */,
+				661E701D19AEFD3700F2B916 /* NoDataTableViewCell.m in Sources */,
+				661576AB19B2C46700C3F44C /* TintedImageView.m in Sources */,
+				661E701A19AEF98A00F2B916 /* Utility.m in Sources */,
+				66C2251419B350F7000860B1 /* DetailUnwindStorboardSegue.m in Sources */,
+				66C2251719B3590B000860B1 /* SortTableViewCell.m in Sources */,
 				661654E719AE1BD500C4CC47 /* main.m in Sources */,
 				661654F419AE1BD500C4CC47 /* DetailViewController.m in Sources */,
+				661E701719AEF47300F2B916 /* SortViewController.m in Sources */,
+				66C2251119B350D4000860B1 /* DetailStoryboardSegue.m in Sources */,
+				661576A719B2C14100C3F44C /* UIColor+Hex.m in Sources */,
+				661576A119B1A6C800C3F44C /* SortStoryboardSegue.m in Sources */,
+				66D1118619AEA9DF0073003E /* Parser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +596,7 @@
 				6616550E19AE1BD500C4CC47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6616550F19AE1BD500C4CC47 /* Build configuration list for PBXNativeTarget "SuburbanWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +605,7 @@
 				6616551119AE1BD500C4CC47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
